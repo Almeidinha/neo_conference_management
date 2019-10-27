@@ -1,2 +1,5 @@
-# neo_conference_management
-Conference Track Management
+# Conference Management
+
+Reads data from .txt and organize them into tracks
+
+
