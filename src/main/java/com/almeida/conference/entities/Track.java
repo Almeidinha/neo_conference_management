@@ -1,10 +1,17 @@
 package com.almeida.conference.entities;
 
+import com.almeida.conference.enums.SessionEmun;
+
 public class Track {
 
     public Track(Session morning, Session afternoon) {
         this.morning = morning;
         this.afternoon = afternoon;
+    }
+
+    public Track() {
+        this.morning = new Session(SessionEmun.MORNING);
+        this.afternoon = new Session(SessionEmun.AFTERNOON);
     }
 
     private Session morning;
@@ -32,5 +39,19 @@ public class Track {
                 "morning=" + morning +
                 ", afternoon=" + afternoon +
                 '}';
+    }
+
+    public boolean add(Talk talk) {
+        boolean added = true;
+
+        if (morning.getTimeAvaliable() >= talk.getLength()) {
+            morning.add(talk);
+        } else if (afternoon.getTimeAvaliable() >= talk.getLength()) {
+            afternoon.add(talk);
+        } else {
+            added = false;
+        }
+        return added;
+
     }
 }
