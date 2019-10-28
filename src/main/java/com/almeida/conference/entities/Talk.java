@@ -3,6 +3,12 @@ package com.almeida.conference.entities;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *
+ * Class reperesntind a Talk of the conferênce
+ *
+ * @author marcos.almeida
+ */
 public class Talk implements Comparable {
 
     public Talk(int length, String title) {
@@ -18,11 +24,17 @@ public class Talk implements Comparable {
     private int length;
     private String title;
 
-    public int getLength() {
+    int getLength() {
         return this.length;
     }
 
-    public int getLength(String title) {
+    /**
+     * Extracts the length of the Talk from it's title
+     *
+     * @param title title
+     * @return length of the talk
+     */
+    private int getLength(String title) {
         Pattern pattern = Pattern.compile("((\\d+)+(min))");
         Matcher matcher = pattern.matcher(title);
         if (matcher.find()) {
@@ -52,6 +64,12 @@ public class Talk implements Comparable {
     }
 
 
+    /**
+     * Simplify the compare method by conparing the length, then the title hash
+     *
+     * @param o {@link Talk}
+     * @return integer size
+     */
     @Override
     public int compareTo(Object o) {
         if (o instanceof Talk) {

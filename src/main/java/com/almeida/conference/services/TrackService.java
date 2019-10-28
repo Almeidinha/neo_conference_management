@@ -3,10 +3,15 @@ package com.almeida.conference.services;
 import com.almeida.conference.entities.Talk;
 import com.almeida.conference.entities.Track;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
+
+/**
+ * Service responsable to schedule the Talks into Session Tracks
+ *
+ */
 public class TrackService {
 
     private static final TrackService trackService = new TrackService();
@@ -18,11 +23,19 @@ public class TrackService {
         return trackService;
     }
 
-    public List<Track> schedule(TreeSet<Talk> talks) {
+    /**
+     * Organize the Talks into Track Sessions,
+     * Creat a new Track if a Talk doesn't fit in any Session
+     *
+     * @param rawList List of {@link Talk}
+     * @return List of {@link Track}
+     */
+    public List<Track> schedule(List<String> rawList) {
 
-        LinkedList<Track> tracks = new LinkedList<>();
-
+        TreeSet<Talk> talks = getTalkList(rawList);
+        List<Track> tracks = new ArrayList<>();
         tracks.add(new Track());
+
         talks.descendingSet().forEach( talk -> {
             boolean success = false;
 
@@ -40,6 +53,24 @@ public class TrackService {
 
         });
         return tracks;
+    }
+
+    /**
+     * Converts the List of String titles into a TreeSet of Talks
+     *
+     * @param rawList List of Strings from the file
+     * @return TreeSet of Talks
+     */
+    private TreeSet<Talk> getTalkList(List<String> rawList) {
+        TreeSet<Talk> talks = new TreeSet<>();
+
+        rawList.forEach( title -> {
+            Talk talk = new Talk(title);
+            talks.add(talk);
+        });
+
+        return talks;
+
     }
 
 }

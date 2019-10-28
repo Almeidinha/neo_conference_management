@@ -3,17 +3,22 @@ package com.almeida.conference.entities;
 import com.almeida.conference.enums.SessionEmun;
 
 import java.time.LocalTime;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Session class representing a period ofa Track
+ *
+ * @author marcos.almeida
+ */
 public class Session {
 
-    public Session(SessionEmun sessionEmun) {
+    Session(SessionEmun sessionEmun) {
         this.sessionEmun = sessionEmun;
         this.sessionLength = sessionEmun.getLength();
         this.timeAvaliable = sessionEmun.getLength();
         this.startTime = sessionEmun.getStartTime();
-        this.talkList = new LinkedList<>();
+        this.talkList = new ArrayList<>();
     }
 
     private int sessionLength;
@@ -31,7 +36,7 @@ public class Session {
         this.sessionLength = sessionLength;
     }
 
-    public int getTimeAvaliable() {
+    int getTimeAvaliable() {
         return timeAvaliable;
     }
 
@@ -47,7 +52,7 @@ public class Session {
         this.startTime = startTime;
     }
 
-    public List<Talk> getTalkList() {
+    List<Talk> getTalkList() {
         return talkList;
     }
 
@@ -79,6 +84,12 @@ public class Session {
         this.timeAvaliable -= talk.getLength();
     }
 
+
+    /**
+     * <p>Formats the output according to the session type<p/>
+     *
+     * @return String output formated
+     */
     public String formatedOutput() {
 
         String period = this.sessionEmun == SessionEmun.MORNING ? "AM" : "PM";

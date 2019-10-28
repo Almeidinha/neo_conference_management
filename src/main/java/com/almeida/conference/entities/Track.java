@@ -2,6 +2,11 @@ package com.almeida.conference.entities;
 
 import com.almeida.conference.enums.SessionEmun;
 
+/**
+ * Class representing a Track in the conference split into Sessions
+ *
+ * @author marcos.almeida
+ */
 public class Track {
 
     public Track(Session morning, Session afternoon) {
@@ -41,6 +46,14 @@ public class Track {
                 '}';
     }
 
+    /**
+     *
+     * Adds a Talk to a Session, if there's time avaliable to fit it in
+     * otherwise return false.
+     *
+     * @param talk {@link Talk}
+     * @return boolean
+     */
     public boolean add(Talk talk) {
         boolean added = true;
 
