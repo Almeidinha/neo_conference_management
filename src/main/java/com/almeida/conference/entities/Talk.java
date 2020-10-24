@@ -1,14 +1,16 @@
 package com.almeida.conference.entities;
 
+import lombok.Data;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
  * Class reperesntind a Talk of the conferênce
  *
  * @author marcos.almeida
  */
+@Data
 public class Talk implements Comparable {
 
     public Talk(int length, String title) {
@@ -23,10 +25,6 @@ public class Talk implements Comparable {
 
     private int length;
     private String title;
-
-    int getLength() {
-        return this.length;
-    }
 
     /**
      * Extracts the length of the Talk from it's title
@@ -43,18 +41,6 @@ public class Talk implements Comparable {
         return 5;
     }
 
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     @Override
     public String toString() {
         return "Talk{" +
@@ -62,7 +48,6 @@ public class Talk implements Comparable {
                 ", title='" + title + '\'' +
                 '}';
     }
-
 
     /**
      * Simplify the compare method by conparing the length, then the title hash

@@ -1,7 +1,6 @@
 package com.almeida.conference.utils;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,9 +45,7 @@ public class FileUtils {
         } catch (IOException e) {
             System.out.println("Could not find .txt file");
         }*/
-
         return lines;
-
     }
 
 }
