@@ -11,23 +11,20 @@ import java.util.stream.IntStream;
 
 /**
  * Conference Management!
- *
  */
 public class App {
 
-    private static final String FILE_PATH =  System.getProperty("user.dir") + File.separator +"files"+ File.separator + "input.txt";
+    private static final String FILE_PATH = System.getProperty("user.dir") + File.separator + "files" + File.separator + "input.txt";
     private static final TrackService trackService = TrackService.getInstance();
     private static final Logger logger = Logger.getLogger();
 
-    public static void main( String[] args ){
+    public static void main(String[] args) {
 
         List<String> rawList = FileUtils.readFromFile(FILE_PATH);
         if (rawList.size() == 0) {
             logger.fatal("File can't be empty!");
             System.exit(1);
         }
-
-
 
         List<Track> tracks = trackService.schedule(rawList);
 
@@ -38,6 +35,6 @@ public class App {
             System.out.print(track.getAfternoon().formatedOutput());
             System.out.println();
         });
-
     }
+
 }

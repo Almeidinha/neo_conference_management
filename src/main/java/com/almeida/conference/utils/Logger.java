@@ -1,12 +1,13 @@
 package com.almeida.conference.utils;
 
+import lombok.NoArgsConstructor;
+
 import java.io.PrintStream;
 
+@NoArgsConstructor
 public class Logger {
 
     private static Logger logger = new Logger();
-
-    private Logger() {}
 
     public static Logger getLogger() {
         return logger;

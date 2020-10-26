@@ -2,22 +2,19 @@ package com.almeida.conference.services;
 
 import com.almeida.conference.entities.Talk;
 import com.almeida.conference.entities.Track;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
-
 /**
  * Service responsable to schedule the Talks into Session Tracks
- *
  */
+@NoArgsConstructor
 public class TrackService {
 
     private static final TrackService trackService = new TrackService();
-
-    private TrackService() {
-    }
 
     public static TrackService getInstance() {
         return trackService;
@@ -36,7 +33,7 @@ public class TrackService {
         List<Track> tracks = new ArrayList<>();
         tracks.add(new Track());
 
-        talks.descendingSet().forEach( talk -> {
+        talks.descendingSet().forEach(talk -> {
             boolean success = false;
 
             for (Track track : tracks) {
@@ -64,7 +61,7 @@ public class TrackService {
     private TreeSet<Talk> getTalkList(List<String> rawList) {
         TreeSet<Talk> talks = new TreeSet<>();
 
-        rawList.forEach( title -> {
+        rawList.forEach(title -> {
             Talk talk = new Talk(title);
             talks.add(talk);
         });

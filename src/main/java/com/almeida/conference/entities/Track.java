@@ -1,12 +1,14 @@
 package com.almeida.conference.entities;
 
 import com.almeida.conference.enums.SessionEmun;
+import lombok.Data;
 
 /**
  * Class representing a Track in the conference split into Sessions
  *
  * @author marcos.almeida
  */
+@Data
 public class Track {
 
     public Track(Session morning, Session afternoon) {
@@ -22,22 +24,6 @@ public class Track {
     private Session morning;
     private Session afternoon;
 
-    public Session getMorning() {
-        return morning;
-    }
-
-    public void setMorning(Session morning) {
-        this.morning = morning;
-    }
-
-    public Session getAfternoon() {
-        return afternoon;
-    }
-
-    public void setAfternoon(Session afternoon) {
-        this.afternoon = afternoon;
-    }
-
     @Override
     public String toString() {
         return "Track{" +
@@ -47,7 +33,6 @@ public class Track {
     }
 
     /**
-     *
      * Adds a Talk to a Session, if there's time avaliable to fit it in
      * otherwise return false.
      *
@@ -67,4 +52,5 @@ public class Track {
         return added;
 
     }
+
 }

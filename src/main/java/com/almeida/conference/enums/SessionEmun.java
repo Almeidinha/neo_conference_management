@@ -1,5 +1,8 @@
 package com.almeida.conference.enums;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalTime;
 
 public enum SessionEmun {
@@ -7,7 +10,12 @@ public enum SessionEmun {
     MORNING(180, LocalTime.of(9, 0, 0)),
     AFTERNOON(240, LocalTime.of(1, 0, 0));
 
+    @Getter
+    @Setter
     private int length;
+
+    @Getter
+    @Setter
     private LocalTime startTime;
 
     SessionEmun(int length, LocalTime startTime) {
@@ -15,19 +23,4 @@ public enum SessionEmun {
         this.startTime = startTime;
     }
 
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
 }

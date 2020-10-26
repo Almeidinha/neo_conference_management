@@ -1,6 +1,7 @@
 package com.almeida.conference.entities;
 
 import com.almeida.conference.enums.SessionEmun;
+import lombok.Data;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
  *
  * @author marcos.almeida
  */
+@Data
 public class Session {
 
     Session(SessionEmun sessionEmun) {
@@ -27,39 +29,6 @@ public class Session {
     private List<Talk> talkList;
     private SessionEmun sessionEmun;
 
-
-    public int getSessionLength() {
-        return sessionLength;
-    }
-
-    public void setSessionLength(int sessionLength) {
-        this.sessionLength = sessionLength;
-    }
-
-    int getTimeAvaliable() {
-        return timeAvaliable;
-    }
-
-    public void setTimeAvaliable(int timeAvaliable) {
-        this.timeAvaliable = timeAvaliable;
-    }
-
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
-
-    List<Talk> getTalkList() {
-        return talkList;
-    }
-
-    public void setTalkList(List<Talk> talkList) {
-        this.talkList = talkList;
-    }
-
     @Override
     public String toString() {
         return "Session{" +
@@ -70,10 +39,9 @@ public class Session {
                 '}';
     }
 
-
     void add(Talk talk) {
         if (talk == null) {
-            throw  new NullPointerException("Talk can't be null!");
+            throw new NullPointerException("Talk can't be null!");
         }
 
         int timeRequired = talk.getLength();
@@ -83,7 +51,6 @@ public class Session {
         this.talkList.add(talk);
         this.timeAvaliable -= talk.getLength();
     }
-
 
     /**
      * <p>Formats the output according to the session type<p/>
@@ -117,4 +84,5 @@ public class Session {
 
         return sb.toString();
     }
+
 }
